@@ -1,0 +1,110 @@
+.techs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.techs__container {
+    padding-left: 70px;
+    padding-right: 70px;
+    background-color: #272727;
+}
+
+.techs__subtitle {
+    margin: 100px 0 90px;
+    padding-bottom: 23px;
+    border-bottom: 1px solid #DADADA;
+    min-width: 100%;
+}
+
+.techs__title {
+    margin-bottom: 26px;
+}
+
+.techs__main-text {
+    max-width: 460px;
+    text-align: center;
+    letter-spacing: -0.04em;
+}
+
+.techs__element-container {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 100px 0;
+    padding: 0;
+}
+
+.techs__element {
+    margin: 0;
+    list-style-type: none;
+    padding: 21px 0;
+    text-align: center;
+    min-height: 60px;
+    min-width: 90px;
+    background: #303030;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.04em;
+    color: #fff;
+}
+
+/* .techs__element:last-of-type {
+    margin-right: auto;
+} */
+
+@media screen and (max-width: 1279px) {
+    .techs__container {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .techs__subtitle {
+        margin-top: 90px;
+        margin-bottom: 80px;
+    }
+    .techs__title {
+        margin-bottom: 22px;
+    }
+    .techs__element {
+        font-size: 12px;
+        line-height: 15px;
+        min-height: 57px;
+        min-width: 84px;
+    
+    }
+    .techs__element-container {
+        margin: 83px 0 90px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .techs__container {
+            padding-left: 10px;
+            padding-right: 10px;
+        
+    }
+    .techs__title {
+        font-size: 30px;
+        line-height: 36px;    
+    }
+    .techs__subtitle {
+        margin-top: 70px;
+        margin-bottom: 60px;
+        padding-bottom: 28px;
+
+    }
+    .techs__element-container {
+        max-width: calc(100% - 120px);
+        row-gap: 10px;
+    }
+    .techs__element-container {
+        margin: 50px auto 70px;
+    }
+}

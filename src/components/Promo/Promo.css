@@ -1,0 +1,117 @@
+.promo {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: #073042;
+    align-content: space-between;
+}
+
+.promo__container {
+    padding-left: 70px;
+    padding-right: 70px;
+    max-height: 574px;
+    box-sizing: border-box;
+
+}
+
+.promo__title {
+    margin: 75px 0 36px;
+    max-width: 640px;
+}
+
+.promo__text {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    max-width: 310px;
+    color: white;
+    opacity: .5;
+    mix-blend-mode: normal;
+}
+
+.promo__link {
+    margin: 146px 0 75px;
+    padding-top: 10px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    width: 129px;
+    height: 36px;
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, .6);
+    border-radius: 3px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.promo__logo {
+    margin-top: 75px;
+    height: 304px;
+    width: 310px;
+}
+
+@media screen and (max-width: 1279px) {
+    .promo {
+        flex-wrap: nowrap;
+    }
+
+    .promo__container {
+        max-height: none;
+        align-items: center;
+        text-align: center;
+        padding-left: 44px;
+        padding-right: 44px;
+    
+    }
+    .promo__logo {
+        order: -1;
+        margin: 140px auto 48px;
+    }
+
+.promo__title {
+    margin: 0 auto 22px;
+    font-size: 40px;
+    line-height: 50px;
+}
+
+.promo__link {
+    margin: 92px auto 76px;
+}
+
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .promo__logo {
+        order: -1;
+        margin: 70px auto 44px;
+        width: 210px;
+        height: 206px;
+    }
+
+    .promo__container {
+        padding-left: 10px;
+        padding-right: 10px;
+    
+    }
+.promo__title {
+    margin-bottom: 24px;
+    font-size: 30px;
+    line-height: 38px;
+}
+
+.promo__link {
+    margin: 80px auto 30px;
+}
+.promo__text {
+    margin: 0 20px;
+}
+
+}
