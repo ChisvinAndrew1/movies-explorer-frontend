@@ -14,7 +14,7 @@
 
 .burger-menu_is-open {
     visibility: visible;
-    opacity: 1;  
+    opacity: 1;
 }
 
 .burger-menu__container {
@@ -93,8 +93,9 @@
     .burger-menu__container {
         padding: 144px 0 48px;
     }
+
     .burger-menu__close {
         top: 13px;
-    right: 13px;
+        right: 13px;
     }
 }

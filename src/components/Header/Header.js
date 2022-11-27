@@ -15,25 +15,25 @@ function Header({ onBurgerMenu }) {
         <Link to="/">
           <img src={logo} className="header__logo" alt="логотип" />
         </Link>
-        <NavTab/>
+        <NavTab />
       </Route>
       <Route path="/movies">
         <Link to="/">
           <img src={logo} className="header__logo" alt="логотип" />
         </Link>
-        <NavTab onBurgerMenu={onBurgerMenu}/>
+        <NavTab onBurgerMenu={onBurgerMenu} />
       </Route>
       <Route path="/saved-movies">
         <Link to="/">
           <img src={logo} className="header__logo" alt="логотип" />
         </Link>
-        <NavTab onBurgerMenu={onBurgerMenu}/>
+        <NavTab onBurgerMenu={onBurgerMenu} />
       </Route>
       <Route path="/profile">
         <Link to="/">
           <img src={logo} className="header__logo" alt="логотип" />
         </Link>
-        <NavTab onBurgerMenu={onBurgerMenu}/>
+        <NavTab onBurgerMenu={onBurgerMenu} />
       </Route>
       <Route path="/signup">
         <div className="header__container_type_small">
@@ -50,7 +50,6 @@ function Header({ onBurgerMenu }) {
         </div>
       </Route>
     </header>
-
   );
 }
 

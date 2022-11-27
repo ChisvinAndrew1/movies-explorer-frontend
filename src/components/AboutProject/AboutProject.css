@@ -5,7 +5,7 @@
 
 .about-project__container {
     padding: 0 70px 0;
-    
+
 }
 
 .about-project__subtitle {
@@ -50,6 +50,7 @@
     .about-project__subtitle {
         margin-top: 90px;
     }
+
     .about-project__container {
         padding: 0 50px 90px;
     }
@@ -61,6 +62,7 @@
         margin-bottom: 60px;
         padding-bottom: 28px;
     }
+
     .about-project__container {
         padding: 0 18px 70px;
     }

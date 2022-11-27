@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Profile.css";
-import "../SignForm/SignForm.css"
+import "../SignForm/SignForm.css";
 
 function Profile() {
   return (
     <form className="profile__form">
       <h2 className="profile__title">Привет, Андрей!</h2>
       <div className="profile__input-container">
-        <label htmlFor="name" className="profile__label">Имя</label>
+        <label htmlFor="name" className="profile__label">
+          Имя
+        </label>
         <input
           name="name"
           type="text"
@@ -25,7 +27,9 @@ function Profile() {
         <span id="error" className="sign__error"></span>
       </div>
       <div className="profile__input-container">
-        <label htmlFor="email" className="profile__label">Email</label>
+        <label htmlFor="email" className="profile__label">
+          Email
+        </label>
         <input
           name="email"
           type="email"

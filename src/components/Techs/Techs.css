@@ -65,20 +65,24 @@
         padding-left: 50px;
         padding-right: 50px;
     }
+
     .techs__subtitle {
         margin-top: 90px;
         margin-bottom: 80px;
     }
+
     .techs__title {
         margin-bottom: 22px;
     }
+
     .techs__element {
         font-size: 12px;
         line-height: 15px;
         min-height: 57px;
         min-width: 84px;
-    
+
     }
+
     .techs__element-container {
         margin: 83px 0 90px;
     }
@@ -86,24 +90,28 @@
 
 @media screen and (max-width: 767px) {
     .techs__container {
-            padding-left: 10px;
-            padding-right: 10px;
-        
+        padding-left: 10px;
+        padding-right: 10px;
+
     }
+
     .techs__title {
         font-size: 30px;
-        line-height: 36px;    
+        line-height: 36px;
     }
+
     .techs__subtitle {
         margin-top: 70px;
         margin-bottom: 60px;
         padding-bottom: 28px;
 
     }
+
     .techs__element-container {
         max-width: calc(100% - 120px);
         row-gap: 10px;
     }
+
     .techs__element-container {
         margin: 50px auto 70px;
     }

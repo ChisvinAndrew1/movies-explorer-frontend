@@ -80,16 +80,19 @@
         padding-right: 50px;
         margin-bottom: 90px;
     }
+
     .about-me__title {
         font-size: 40px;
         line-height: 40px;
         margin-bottom: 16px;
     }
+
     .about-me__dectription {
         font-size: 12px;
         line-height: 18px;
- 
+
     }
+
     .about-me__main-text {
         font-size: 12px;
         line-height: 18px;
@@ -101,11 +104,12 @@
     .about-me__avatar {
         right: 50px;
         width: 255px;
-    height: 307px;
+        height: 307px;
     }
-.about-me__subtitle {
-    margin-top: 90px;
-}
+
+    .about-me__subtitle {
+        margin-top: 90px;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -113,6 +117,7 @@
         padding: 0 14px;
         margin-bottom: 70px;
     }
+
     .about-me__subtitle {
         order: -2;
         margin-top: 70px;
@@ -120,34 +125,35 @@
         margin-bottom: 60px;
     }
 
-.about-me__avatar {
-    position: static;
-    order: -1;
-    width: 292px;
-    height: 352px;
-}
+    .about-me__avatar {
+        position: static;
+        order: -1;
+        width: 292px;
+        height: 352px;
+    }
 
-.about-me__title {
-    font-size: 30px;
+    .about-me__title {
+        font-size: 30px;
         line-height: 36px;
         margin-top: 40px;
         margin-bottom: 20px;
-}
+    }
 
-.about-me__dectription {
-    margin-bottom: 20px;
-    font-size: 11px;
-    line-height: 16px;
-}
+    .about-me__dectription {
+        margin-bottom: 20px;
+        font-size: 11px;
+        line-height: 16px;
+    }
 
-.about-me__main-text {
-    margin-bottom: 40px;
-    font-size: 11px;
-    line-height: 16px;
+    .about-me__main-text {
+        margin-bottom: 40px;
+        font-size: 11px;
+        line-height: 16px;
 
-}
-.about-me__link {
-    margin-right: 26px;
-}
+    }
+
+    .about-me__link {
+        margin-right: 26px;
+    }
 
 }

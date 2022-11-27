@@ -42,6 +42,7 @@
 .nav-tab__link_type_movies:nth-child(2) {
     margin-right: 50px;
 }
+
 .nav-tab__link_type_movies:last-of-type {
     margin-right: 0;
     display: flex;
@@ -73,10 +74,11 @@
     .nav-tab__link_type_movies {
         display: none;
     }
+
     .nav-tab__link_type_movies:last-of-type {
         display: none;
     }
-   
+
     .nav-tab__burger {
         visibility: visible;
         opacity: 1;
@@ -91,10 +93,12 @@
     .nav-tab__container {
         column-gap: 14px;
     }
+
     .nav-tab__link {
         font-size: 10px;
         line-height: 16px;
     }
+
     .nav-tab__link_type_signin {
         width: 54px;
         height: 26px;

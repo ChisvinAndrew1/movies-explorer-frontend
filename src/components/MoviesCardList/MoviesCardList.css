@@ -33,6 +33,7 @@
     .movies-card-list {
         gap: 30px;
     }
+
     .movies-card-container {
         padding: 70px 30px 0;
     }
@@ -42,6 +43,7 @@
     .movies-card-container {
         padding: 40px 10px 0;
     }
+
     .movies-card-list {
         gap: 34px;
     }

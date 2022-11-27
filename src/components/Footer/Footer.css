@@ -36,7 +36,7 @@
     line-height: 16px;
     color: #8B8B8B;
     margin: 0 0 20px;
-    
+
 
 }
 
@@ -54,17 +54,20 @@
         padding-right: 10px;
         margin-bottom: 10px;
     }
+
     .footer__year {
         order: 5;
         width: 100%;
         text-align: center;
         margin-bottom: 0;
     }
+
     .footer__subtitle {
         margin-bottom: 30px;
         font-size: 12px;
         line-height: 15px;
-    }    
+    }
+
     .footer__year {
         font-size: 12px;
         line-height: 15px;

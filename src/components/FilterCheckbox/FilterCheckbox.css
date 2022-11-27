@@ -18,21 +18,23 @@
     cursor: pointer;
     box-sizing: border-box;
     transition: all 1s ease-in-out;
-    background-color: #313131; /* цвет изменил,чтобы не сливался с фоном */
+    background-color: #313131;
+    /* цвет изменил,чтобы не сливался с фоном */
     box-shadow: 0px 4px 4px rgba(50, 50, 71, 0.08), 0px 4px 8px rgba(50, 50, 71, 0.06);
 }
 
 .checkbox__input:checked {
     background: #073042;
 
-  
-} 
+
+}
+
 .checkbox__input::after {
     content: '';
     border-radius: 50%;
     padding-right: 2px;
     background: center/16px 16px no-repeat,
-    #3DDC84;
+        #3DDC84;
     width: 16px;
     height: 16px;
     transition: translate 1s ease-in-out;
@@ -58,4 +60,3 @@
         line-height: 18px;
     }
 }
-  

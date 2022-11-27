@@ -6,7 +6,7 @@
 .portfolio__container {
     padding-left: 70px;
     padding-right: 70px;
-margin-bottom: 125px;
+    margin-bottom: 125px;
 }
 
 .portfolio__subtitle {
@@ -63,10 +63,12 @@ margin-bottom: 125px;
         padding-right: 50px;
         margin-bottom: 90px;
     }
+
     .link__text {
         font-size: 28px;
 
     }
+
     .link__arrow {
         font-size: 28px;
     }
@@ -79,16 +81,19 @@ margin-bottom: 125px;
         padding-right: 14px;
         margin-bottom: 70px;
     }
+
     .portfolio__subtitle {
         margin-bottom: 40px;
         font-size: 14px;
         line-height: 20px;
     }
+
     .link__text {
         font-size: 18px;
         line-height: 28px;
 
     }
+
     .link__arrow {
         font-size: 18px;
         line-height: 28px;

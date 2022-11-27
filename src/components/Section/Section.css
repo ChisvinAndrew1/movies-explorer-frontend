@@ -41,12 +41,15 @@
         font-size: 12px;
         line-height: 18px;
     }
-}@media screen and (max-width: 767px) {
-    
+}
+
+@media screen and (max-width: 767px) {
+
     .section__subtitle {
         font-size: 18px;
         line-height: 22px;
     }
+
     .section__main-text {
         font-size: 11px;
         line-height: 16px;

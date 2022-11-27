@@ -31,19 +31,24 @@
         margin-bottom: 22px;
         line-height: 22px;
     }
+
     .two-columnus {
         min-height: 217px;
     }
+
     .two-columnus__block {
         margin-right: 30px;
 
     }
-}@media screen and (max-width: 767px) {
+}
+
+@media screen and (max-width: 767px) {
     .two-columnus__title {
         margin-bottom: 16px;
         font-size: 18px;
         line-height: 22px;
     }
+
     .two-columnus__block {
         margin-right: 0;
         margin-bottom: 56px;

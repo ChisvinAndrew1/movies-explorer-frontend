@@ -2,9 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./NavTab.css";
 
-function NavTab({onBurgerMenu}) {
+function NavTab({ onBurgerMenu }) {
   const isloggedIn = true;
-  console.log(onBurgerMenu)
+  console.log(onBurgerMenu);
   return (
     <>
       {!isloggedIn ? (
@@ -37,7 +37,7 @@ function NavTab({onBurgerMenu}) {
             to="/profile"
             className="nav-tab__link nav-tab__link_type_movies"
           >
-            Аккаунт 
+            Аккаунт
             <span className="nav-tab__link-icon"></span>
           </NavLink>
           <span className="nav-tab__burger" onClick={onBurgerMenu}></span>
