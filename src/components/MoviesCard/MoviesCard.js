@@ -11,7 +11,7 @@ function MoviesCard() {
         alt="карточка фильма"
       />
       <h3 className="movies-card__title">33 слова о дизайне</h3>
-      <div className="movies-card__stroke movies-card__stroke_type_active"></div>
+      <button className="movies-card__stroke movies-card__stroke_type_active"></button>
       <p className="movies-card__duration">1ч 42м</p>
     </article>
   );

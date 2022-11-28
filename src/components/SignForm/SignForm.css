@@ -102,6 +102,10 @@
 }
 
 @media screen and (max-width: 767px) {
+    .sign__title {
+        text-align: center;
+    }
+
     .sign__form {
         width: 260px;
     }

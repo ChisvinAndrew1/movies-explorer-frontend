@@ -4,7 +4,6 @@ import "./NavTab.css";
 
 function NavTab({ onBurgerMenu }) {
   const isloggedIn = true;
-  console.log(onBurgerMenu);
   return (
     <>
       {!isloggedIn ? (

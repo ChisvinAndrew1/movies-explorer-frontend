@@ -70,7 +70,9 @@
     border: none;
 }
 
-@media screen and (max-width: 1279px) {
+
+
+@media screen and (max-width: 767px) {
     .nav-tab__link_type_movies {
         display: none;
     }
@@ -85,11 +87,8 @@
         width: 44px;
         height: 44px;
         background-image: url("../../images/icon-burger-menu.svg");
-        background-color: #202020;
     }
-}
 
-@media screen and (max-width: 767px) {
     .nav-tab__container {
         column-gap: 14px;
     }
