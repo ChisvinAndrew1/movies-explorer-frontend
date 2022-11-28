@@ -10,7 +10,11 @@ function SearchForm() {
       <form className="search-form search-form__container">
         <fieldset className="search-form__search">
           <img className="search-form__img" alt="поиск" src={iconSearch} />
-          <input className="search-form__input" placeholder="Фильм" required></input>
+          <input
+            className="search-form__input"
+            placeholder="Фильм"
+            required
+          ></input>
           <button className="search-form__submit" type="submit" />
         </fieldset>
         <FilterCheckbox />
