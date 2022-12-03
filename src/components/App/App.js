@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Register from "../Register/Register";
@@ -11,21 +11,35 @@ import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import PageNotFound from "../PageNotFound/PageNotFound ";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { IsLoggedInContext } from "../../contexts/isloggedInContext";
 
 function App() {
-  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(true);
+  const history = useHistory();
+  const [currentUser, setCurrentUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(true);
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   function handleBurgerMenuClick() {
     setIsBurgerMenuOpen(true);
   }
   function closeBurgerMenu() {
     setIsBurgerMenuOpen(false);
   }
+
+  function handleLogOut() {
+    setCurrentUser({});
+    setLoggedIn(false);
+    localStorage.clear();
+    history.push('/');
+  }
   return (
+    <CurrentUserContext.Provider value={currentUser}>
+    <IsLoggedInContext.Provider value={loggedIn}>
     <div className="App">
       <div className="app__page">
         <Switch>
           <Route exact path="/">
-            <Header />
+            <Header/>
             <Main />
             <Footer />
           </Route>
@@ -53,7 +67,8 @@ function App() {
             <Header onBurgerMenu={handleBurgerMenuClick} />
             <BurgerMenu isOpen={isBurgerMenuOpen} onClose={closeBurgerMenu} />
 
-            <Profile />
+            <Profile 
+            onLogOut={handleLogOut}/>
           </Route>
           <Route path="*">
             <PageNotFound />
@@ -61,6 +76,8 @@ function App() {
         </Switch>
       </div>
     </div>
+    </IsLoggedInContext.Provider>
+    </CurrentUserContext.Provider>
   );
 }
 
