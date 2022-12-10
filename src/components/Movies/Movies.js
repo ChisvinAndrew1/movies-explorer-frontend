@@ -2,21 +2,20 @@ import React, { useState } from "react";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import MoviesApi from "../../utils/MoviesApi";
+import moviesApi from "../../utils/MoviesApi";
 import { filterMovies, filterShortMovies, transformMovies } from "../../utils/filmController";
-function Movies() {
+function Movies({ savedMoviesList, onLikeClick, onDeleteClick }) {
   const currentUser = React.useContext(CurrentUserContext);
-  // const [shortMovies, setShortMovies] = useState(false); // состояние чекбокса
   const [checkboxStatus, setCheckboxStatus] = useState(false);
-
+console.log(checkboxStatus)
   const [initialMovies, setInitialMovies] = useState([]); // фильмы полученные с запроса
   const [filteredMovies, setFilteredMovies] = useState([]); // отфильтрованные по чекбоксу и запросу фильмы
   const [NotFound, setNotFound] = useState(false); // если по запросу ничего не найдено - скроем фильмы
   const [isAllMovies, setIsAllMovies] = useState([]); // все фильмы от сервера, для единоразового обращения к нему
-
   // поиск по массиву и установка состояния
   function handleSetFilteredMovies(movies, userQuery, shortMoviesCheckbox) {
     const moviesList = filterMovies(movies, userQuery, shortMoviesCheckbox);
+    console.log(moviesList);
     if (moviesList.length === 0) {
       setNotFound(true);
     } else {
@@ -39,7 +38,7 @@ function Movies() {
 
     if (isAllMovies.length === 0) {
       // setIsLoader(true);
-      MoviesApi
+      moviesApi
         .getMovies()
         .then((movies) => {
           setIsAllMovies(movies);
@@ -97,13 +96,14 @@ function Movies() {
       <SearchForm 
        handleSearchSubmit={handleSearchSubmit}
        handleShortFilms={handleShortFilms}
+       checkboxStatus={checkboxStatus}
        />
       {!NotFound && (
         <MoviesCardList
-        moviesList={filteredMovies}
-        // savedMoviesList={savedMoviesList}
-        // onLikeClick={onLikeClick}
-        // onDeleteClick={onDeleteClick}
+        movieList={filteredMovies}
+        savedMoviesList={savedMoviesList}
+        onLikeClick={onLikeClick}
+        onDeleteClick={onDeleteClick}
         />
       )}
     </div>

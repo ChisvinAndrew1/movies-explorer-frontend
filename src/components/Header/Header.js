@@ -15,7 +15,7 @@ function Header({ onBurgerMenu }) {
         <Link to="/">
           <img src={logo} className="header__logo" alt="логотип" />
         </Link>
-        <NavTab />
+        <NavTab onBurgerMenu={onBurgerMenu} />
       </Route>
       <Route path="/movies">
         <Link to="/">

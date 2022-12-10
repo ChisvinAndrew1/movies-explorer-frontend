@@ -27,6 +27,7 @@ function filterShortMovies(movies) {
 
 // фильтрация по запросу
 function filterMovies(movies, userQuery, shortMoviesCheckbox) {
+  console.log(movies)
   const moviesByUserQuery = movies.filter((movie) => {
     const movieRu = String(movie.nameRU).toLowerCase().trim();
     const movieEn = String(movie.nameEN).toLowerCase().trim();
@@ -41,7 +42,6 @@ function filterMovies(movies, userQuery, shortMoviesCheckbox) {
   }
 }
 
-// преобразование длительности
 function transformDuration(duration) {
   const hours = Math.trunc(duration / 60);
   const minutes = duration % 60;
@@ -52,10 +52,13 @@ function transformDuration(duration) {
   }
 }
 
-// cравнение сохраненных фильмов
 function getSavedMovieCard(arr, movie) {
+  console.log(arr)
+  console.log(movie)
+
   return arr.find((item) => {
-    return item.movieId === (movie.id || movie.movieId);
+    console.log(item.movieId)
+    return item.movieId === (movie._id || movie.movieId);
   });
 }
 

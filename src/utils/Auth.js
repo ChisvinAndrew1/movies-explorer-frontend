@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.chisvin.nomoredomains.xyz';
+export const BASE_URL = 'http://localhost:3001';
 
 const checkResponse = (response) => {
   console.log('response ok: ', response);
@@ -8,7 +8,7 @@ const checkResponse = (response) => {
 
   return Promise.reject(`Ошибка ${response.status}`)}
 
-export const register = ({email, password}) => {
+export const register = ({email, password, name}) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
@@ -16,7 +16,7 @@ export const register = ({email, password}) => {
       'Content-Type': 'application/json'
     },
     credentials: 'include',
-    body: JSON.stringify({email, password})
+    body: JSON.stringify({email, password, name})
   })
   .then(checkResponse)
 };
@@ -41,7 +41,7 @@ export const getContent = () => {
     },
     credentials: 'include',
   })
-  .then(res => res.json())
+  .then(checkResponse)
 }
 
 export const signout = () => {

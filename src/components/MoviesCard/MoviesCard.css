@@ -2,6 +2,7 @@
     display: flex;
     max-width: 270px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .movies-card__image {
@@ -20,6 +21,7 @@
     line-height: 16px;
     color: white;
     margin: 4px 0 0;
+    width: calc(100% - 24px);
 }
 
 .movies-card__stroke {
@@ -38,6 +40,20 @@
     background-image: url(../../images/movies-stroke_active.svg);
 
 }
+
+.movies-card__delete {
+    background: url(../../images/delete_button.svg) no-repeat center center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #313131;
+    margin-left: auto;
+    border: none;
+    padding: 0;
+}
+
+
 
 .movies-card__duration {
     font-family: 'Inter', Arial, sans-serif;

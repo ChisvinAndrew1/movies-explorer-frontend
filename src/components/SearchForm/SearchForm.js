@@ -8,11 +8,11 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useLocation } from "react-router-dom";
 
 
-function SearchForm({handleSearchSubmit, checkboxStatus , handleShortFilms}) {
+function SearchForm({handleSearchSubmit , handleShortFilms, checkboxStatus}) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const {
-    values, handleChangeInput, isValid,
+    values, handleChange, isValid, setIsValid
   } = useFormWithValidation();
 
   const location = useLocation();
@@ -29,10 +29,10 @@ function SearchForm({handleSearchSubmit, checkboxStatus , handleShortFilms}) {
   }, [isValid]);
 
   React.useEffect(() => {
-    if (location.pathname === '/movies' && localStorage.getItem(currentUser.email)) {
+    if (location.pathname === '/movies' && localStorage.getItem(`${currentUser.email} - movieSearch`)) {
       const searchValue = localStorage.getItem(`${currentUser.email} - movieSearch`);
       values.search = searchValue;
-      isValid(true);
+      setIsValid(true);
     }
   }, [currentUser]);
 
@@ -42,19 +42,19 @@ function SearchForm({handleSearchSubmit, checkboxStatus , handleShortFilms}) {
         <fieldset className="search-form__search">
           <img className="search-form__img" alt="поиск" src={iconSearch} />
           <input
+                      name="search"
             value={values.search || ''}
-            onChange={handleChangeInput}
+            onChange={handleChange}
             className="search-form__input"
             placeholder="Фильм"
             required
             autoComplete="off"
             minLength="2"
-            name="search"
           />
           <span className="search__error">{errorSearch}</span>
           <button disabled={!isValid} className="search-form__submit" type="submit" />
         </fieldset>
-        <FilterCheckbox shortMovies={checkboxStatus} handleShortFilms={handleShortFilms}/>
+        <FilterCheckbox checkboxStatus={checkboxStatus} handleShortFilms={handleShortFilms}/>
       </form>
     </Section>
   );

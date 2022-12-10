@@ -12,11 +12,10 @@ class MoviesApi {
   
     getMovies() {
         return fetch(`${this._url}`, {
-          method: 'GET',
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
+          // credentials: 'include',
         }).then(this._setPromiseStatus);
       }
+
     }
 
   

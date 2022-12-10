@@ -3,8 +3,9 @@ import { NavLink } from "react-router-dom";
 import { IsLoggedInContext } from "../../contexts/isloggedInContext";
 import "./NavTab.css";
 
-function NavTab({ onBurgerMenu, }) {
+function NavTab({ onBurgerMenu }) {
   const loggedIn = React.useContext(IsLoggedInContext);
+  console.log(loggedIn)
 
 
   return (
