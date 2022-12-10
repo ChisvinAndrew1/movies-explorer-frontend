@@ -17,7 +17,7 @@
 [Ссылка на макет в Figma](https://www.figma.com/file/95XvWKMt1ziPMgJGsvX954/Diploma-(black)?node-id=932%3A3806&t=XmTUXVThYTQSZ80i-1)
 
 [ссылка на пул реквест](https://github.com/ChisvinAndrew1/movies-explorer-frontend/pull/6)
-
+[ссылка на рабочее приложение](https://chisvin.nomoredomains.xyz)
 
 
 
