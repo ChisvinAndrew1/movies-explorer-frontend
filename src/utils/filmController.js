@@ -54,13 +54,14 @@ function transformDuration(duration) {
 
 function getSavedMovieCard(arr, movie) {
   console.log(arr)
-  console.log(movie)
 
-  return arr.find((item) => {
-    console.log(item.movieId)
-    return item.movieId === (movie._id || movie.movieId);
-  });
-}
+  console.log(movie.id)
+  return arr.find((m) => m.movieId === movie.id);
+  // return arr.find((item) => {
+  //   console.log(item.movieId)
+  //   return item.movieId === (movie._id || movie.movieId);
+  };
+
 
 export {
   transformMovies,
