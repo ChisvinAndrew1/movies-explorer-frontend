@@ -46,8 +46,8 @@ function App() {
       .finally(() => {
         setIsLoader(false);
         setLoad(true);
-      })
-}, []);;
+      });
+  }, []);
 
   React.useEffect(() => {
     if (loggedIn) {
@@ -59,7 +59,8 @@ function App() {
           setCurrentUser(userData);
           // setCards(cardList.reverse());
         })
-        .catch((err) => console.log(err)).finally(() => setIsLoader(false));;
+        .catch((err) => console.log(err))
+        .finally(() => setIsLoader(false));
     }
   }, [loggedIn]);
 
@@ -78,7 +79,7 @@ function App() {
   }
 
   function handleRegistration(data) {
-    setIsLoader(true)
+    setIsLoader(true);
     auth
       .register(data)
       .then((res) => {
@@ -87,7 +88,8 @@ function App() {
           history.push("/signin");
         }
       })
-      .catch(() => {}).finally(() => setIsLoader(false));
+      .catch(() => {})
+      .finally(() => setIsLoader(false));
   }
   function handleAuth(data) {
     setIsLoader(true);
@@ -105,7 +107,8 @@ function App() {
         //   message: "Что-то пошло не так! Попробуйте еще раз.",
         //   img: info_err,
         // });
-      }).finally(() => setIsLoader(false));
+      })
+      .finally(() => setIsLoader(false));
   }
 
   function handleProfile({ email, name }) {
@@ -128,15 +131,15 @@ function App() {
         //   text: err,
         // })
       )
-    .finally(() => setIsLoader(false));
+      .finally(() => setIsLoader(false));
   }
 
   function handleSaveMovie(movie) {
     mainApi
       .addNewMovie(movie)
       .then((newMovie) => {
-        setSavedMoviesList([newMovie, ...savedMoviesList])
-        console.log(savedMoviesList)
+        setSavedMoviesList([newMovie, ...savedMoviesList]);
+        console.log(savedMoviesList);
       })
       .catch(
         (err) => console.log(err)
@@ -149,14 +152,13 @@ function App() {
   }
 
   function handleDeleteMovie(movie) {
-    console.log(movie)
+    console.log(movie);
     const savedMovie = savedMoviesList.find(
       (item) => item.movieId === movie.id || item.movieId === movie.movieId
     );
-    console.log(savedMoviesList)
+    console.log(savedMoviesList);
     mainApi
-      .deleteMovie(savedMovie._id
-        )
+      .deleteMovie(savedMovie._id)
       .then(() => {
         const newMoviesList = savedMoviesList.filter((m) => {
           if (movie.id === m.movieId || movie.movieId === m.movieId) {
@@ -181,12 +183,14 @@ function App() {
     if (loggedIn && currentUser) {
       mainApi
         .getSavedMovies()
-        .then(data => {
-          const UserMoviesList = data.filter(m => m.owner === currentUser._id);
+        .then((data) => {
+          const UserMoviesList = data.filter(
+            (m) => m.owner === currentUser._id
+          );
           setSavedMoviesList(UserMoviesList);
         })
-        .catch(err =>
-          console.log(err)
+        .catch(
+          (err) => console.log(err)
           // setIsInfoTooltip({
           //   isOpen: true,
           //   successful: false,
@@ -196,85 +200,80 @@ function App() {
     }
   }, [currentUser, loggedIn]);
 
-
-
   return (
     <div className="App">
-      
       {!load ? (
         <Preloader isOpen={isLoader} />
-       ) : ( 
-    <CurrentUserContext.Provider value={currentUser}>
-      <IsLoggedInContext.Provider value={loggedIn}>
-       
-          <div className="app__page">
-            <Switch>
-              <Route exact path="/">
-                <Header onBurgerMenu={handleBurgerMenuClick} />
-                <BurgerMenu
-                  isOpen={isBurgerMenuOpen}
-                  onClose={closeBurgerMenu}
-                />
-                <Main />
-                <Footer />
-              </Route>
-              <Route path="/signup">
-                <Header />
-                <Register handleRegister={handleRegistration} />
-              </Route>
-              <Route path="/signin">
-                <Header />
-                <Login onSubmit={handleAuth} />
-              </Route>
-              <ProtectedRoute path="/movies" loggedIn={loggedIn}>
-                <Header onBurgerMenu={handleBurgerMenuClick} />
-                <BurgerMenu
-                  isOpen={isBurgerMenuOpen}
-                  onClose={closeBurgerMenu}
-                />
-                <Movies
-                  onLikeClick={handleSaveMovie}
-                  savedMoviesList={savedMoviesList}
-                  onDeleteClick={handleDeleteMovie}
-                />
-                <Footer />
-              </ProtectedRoute>
-              <ProtectedRoute path="/saved-movies" loggedIn={loggedIn}>
-                <Header onBurgerMenu={handleBurgerMenuClick} />
-                <BurgerMenu
-                  isOpen={isBurgerMenuOpen}
-                  onClose={closeBurgerMenu}
-                />
-                <SavedMovies
-                  savedMoviesList={savedMoviesList}
-                  onDeleteClick={handleDeleteMovie}
-                />
-                <Footer />
-              </ProtectedRoute>
-              <ProtectedRoute path="/profile" loggedIn={loggedIn}>
-                <Header onBurgerMenu={handleBurgerMenuClick} />
-                <BurgerMenu
-                  isOpen={isBurgerMenuOpen}
-                  onClose={closeBurgerMenu}
-                />
+      ) : (
+        <CurrentUserContext.Provider value={currentUser}>
+          <IsLoggedInContext.Provider value={loggedIn}>
+            <div className="app__page">
+              <Switch>
+                <Route exact path="/">
+                  <Header onBurgerMenu={handleBurgerMenuClick} />
+                  <BurgerMenu
+                    isOpen={isBurgerMenuOpen}
+                    onClose={closeBurgerMenu}
+                  />
+                  <Main />
+                  <Footer />
+                </Route>
+                <Route path="/signup">
+                  <Header />
+                  <Register handleRegister={handleRegistration} />
+                </Route>
+                <Route path="/signin">
+                  <Header />
+                  <Login onSubmit={handleAuth} />
+                </Route>
+                <ProtectedRoute path="/movies" loggedIn={loggedIn}>
+                  <Header onBurgerMenu={handleBurgerMenuClick} />
+                  <BurgerMenu
+                    isOpen={isBurgerMenuOpen}
+                    onClose={closeBurgerMenu}
+                  />
+                  <Movies
+                    onLikeClick={handleSaveMovie}
+                    savedMoviesList={savedMoviesList}
+                    onDeleteClick={handleDeleteMovie}
+                  />
+                  <Footer />
+                </ProtectedRoute>
+                <ProtectedRoute path="/saved-movies" loggedIn={loggedIn}>
+                  <Header onBurgerMenu={handleBurgerMenuClick} />
+                  <BurgerMenu
+                    isOpen={isBurgerMenuOpen}
+                    onClose={closeBurgerMenu}
+                  />
+                  <SavedMovies
+                    savedMoviesList={savedMoviesList}
+                    onDeleteClick={handleDeleteMovie}
+                  />
+                  <Footer />
+                </ProtectedRoute>
+                <ProtectedRoute path="/profile" loggedIn={loggedIn}>
+                  <Header onBurgerMenu={handleBurgerMenuClick} />
+                  <BurgerMenu
+                    isOpen={isBurgerMenuOpen}
+                    onClose={closeBurgerMenu}
+                  />
 
-                <Profile
-                  handleProfile={handleProfile}
-                  onLogOut={handleLogOut}
-                />
-              </ProtectedRoute>
+                  <Profile
+                    handleProfile={handleProfile}
+                    onLogOut={handleLogOut}
+                  />
+                </ProtectedRoute>
 
-              <Route path="*">
-                <PageNotFound />
-              </Route>
-            </Switch>
-          </div>
-      </IsLoggedInContext.Provider>
-    </CurrentUserContext.Provider>
-      // 
+                <Route path="*">
+                  <PageNotFound />
+                </Route>
+              </Switch>
+            </div>
+          </IsLoggedInContext.Provider>
+        </CurrentUserContext.Provider>
+        //
       )}
     </div>
-
   );
 }
 

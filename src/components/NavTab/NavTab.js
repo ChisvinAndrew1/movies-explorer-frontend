@@ -5,8 +5,7 @@ import "./NavTab.css";
 
 function NavTab({ onBurgerMenu }) {
   const loggedIn = React.useContext(IsLoggedInContext);
-  console.log(loggedIn)
-
+  console.log(loggedIn);
 
   return (
     <>

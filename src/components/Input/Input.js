@@ -18,7 +18,9 @@ function Input({ name, value, type, label, handleChange, error }) {
         onChange={handleChange}
         required
       />
-      <span id="error" className="sign__error">{error}</span>
+      <span id="error" className="sign__error">
+        {error}
+      </span>
     </div>
   );
 }

@@ -5,9 +5,9 @@ import Input from "../Input/Input";
 import SignForm from "../SignForm/SignForm";
 import "../SignForm/SignForm.css";
 
-function Login({onSubmit}) {
-  const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
-
+function Login({ onSubmit }) {
+  const { values, handleChange, resetForm, errors, isValid } =
+    useFormWithValidation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ function Login({onSubmit}) {
 
   return (
     <SignForm
-    onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
       title="Рады видеть!"
       textSubmit="Войти"
       isValid={isValid}
@@ -37,20 +37,20 @@ function Login({onSubmit}) {
       }
     >
       <Input
-         name="email"
-         type="email"
-         value={values.email || ''}
-         label="E-mail"
-         handleChange={handleChange}
-         error={errors.email}
+        name="email"
+        type="email"
+        value={values.email || ""}
+        label="E-mail"
+        handleChange={handleChange}
+        error={errors.email}
       />
       <Input
-       name="password"
-       type="password"
-       value={values.password || ''}
-       label="Пароль"
-       handleChange={handleChange}
-       error={errors.password}
+        name="password"
+        type="password"
+        value={values.password || ""}
+        label="Пароль"
+        handleChange={handleChange}
+        error={errors.password}
       />
     </SignForm>
   );

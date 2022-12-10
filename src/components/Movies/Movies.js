@@ -3,11 +3,15 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import moviesApi from "../../utils/MoviesApi";
-import { filterMovies, filterShortMovies, transformMovies } from "../../utils/filmController";
+import {
+  filterMovies,
+  filterShortMovies,
+  transformMovies,
+} from "../../utils/filmController";
 function Movies({ savedMoviesList, onLikeClick, onDeleteClick }) {
   const currentUser = React.useContext(CurrentUserContext);
   const [checkboxStatus, setCheckboxStatus] = useState(false);
-console.log(checkboxStatus)
+  console.log(checkboxStatus);
   const [initialMovies, setInitialMovies] = useState([]); // фильмы полученные с запроса
   const [filteredMovies, setFilteredMovies] = useState([]); // отфильтрованные по чекбоксу и запросу фильмы
   const [NotFound, setNotFound] = useState(false); // если по запросу ничего не найдено - скроем фильмы
@@ -48,8 +52,8 @@ console.log(checkboxStatus)
             checkboxStatus
           );
         })
-        .catch()
-        // .finally(() => setIsLoader(false));
+        .catch();
+      // .finally(() => setIsLoader(false));
     } else {
       handleSetFilteredMovies(isAllMovies, inputValue, checkboxStatus);
     }
@@ -93,17 +97,17 @@ console.log(checkboxStatus)
   }, [currentUser]);
   return (
     <div className="movies">
-      <SearchForm 
-       handleSearchSubmit={handleSearchSubmit}
-       handleShortFilms={handleShortFilms}
-       checkboxStatus={checkboxStatus}
-       />
+      <SearchForm
+        handleSearchSubmit={handleSearchSubmit}
+        handleShortFilms={handleShortFilms}
+        checkboxStatus={checkboxStatus}
+      />
       {!NotFound && (
         <MoviesCardList
-        movieList={filteredMovies}
-        savedMoviesList={savedMoviesList}
-        onLikeClick={onLikeClick}
-        onDeleteClick={onDeleteClick}
+          movieList={filteredMovies}
+          savedMoviesList={savedMoviesList}
+          onLikeClick={onLikeClick}
+          onDeleteClick={onDeleteClick}
         />
       )}
     </div>

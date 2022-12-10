@@ -15,7 +15,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "deploy": "npm run build && scp -r ./build/* chisvin_andrew@51.250.111.109:/home/chisvin_andrew/frontend",
+    "deploy": "npm run build && scp -r ./build/* chisvin_diplom@158.160.2.105:/home/chisvin_diplom/frontend",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 
 function Register({ handleRegister }) {
-
   const { values, handleChange, errors, isValid } = useFormWithValidation();
 
   const handleSubmit = (e) => {
@@ -21,7 +20,6 @@ function Register({ handleRegister }) {
   return (
     <SignForm
       onSubmit={handleSubmit}
-      
       // setInputs={setUserRegisterData}
       // inputsValue={userRegisterData}
       title="Добро пожаловать!"
@@ -39,7 +37,7 @@ function Register({ handleRegister }) {
       <Input
         name="name"
         type="text"
-        value={values.name || ''}
+        value={values.name || ""}
         label="Имя"
         handleChange={handleChange}
         error={errors.name}
@@ -47,7 +45,7 @@ function Register({ handleRegister }) {
       <Input
         name="email"
         type="email"
-        value={values.email || ''}
+        value={values.email || ""}
         label="E-mail"
         handleChange={handleChange}
         error={errors.email}
@@ -55,7 +53,7 @@ function Register({ handleRegister }) {
       <Input
         name="password"
         type="password"
-        value={values.password || ''}
+        value={values.password || ""}
         label="Пароль"
         handleChange={handleChange}
         error={errors.password}

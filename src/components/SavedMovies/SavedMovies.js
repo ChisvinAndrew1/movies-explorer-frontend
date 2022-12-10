@@ -6,17 +6,19 @@ import "./SavedMovies.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { filterMovies, filterShortMovies } from "../../utils/filmController";
 
-
 function SavedMovies({ onDeleteClick, savedMoviesList }) {
   const currentUser = useContext(CurrentUserContext);
   const [checkboxStatus, setCheckboxStatus] = useState(false);
-  const [NotFound, setNotFound] = useState(false); 
-  const [showedMovies, setShowedMovies] = useState(savedMoviesList); 
-  const [filteredMovies, setFilteredMovies] = useState(showedMovies); 
-
+  const [NotFound, setNotFound] = useState(false);
+  const [showedMovies, setShowedMovies] = useState(savedMoviesList);
+  const [filteredMovies, setFilteredMovies] = useState(showedMovies);
 
   function handleSearchSubmit(inputValue) {
-    const moviesList = filterMovies(savedMoviesList, inputValue, checkboxStatus);
+    const moviesList = filterMovies(
+      savedMoviesList,
+      inputValue,
+      checkboxStatus
+    );
     if (moviesList.length === 0) {
       setNotFound(true);
       // setIsInfoTooltip({
@@ -36,7 +38,9 @@ function SavedMovies({ onDeleteClick, savedMoviesList }) {
       setCheckboxStatus(true);
       localStorage.setItem(`${currentUser.email} - shortSavedMovies`, true);
       setShowedMovies(filterShortMovies(filteredMovies));
-      filterShortMovies(filteredMovies).length === 0 ? setNotFound(true) : setNotFound(false);
+      filterShortMovies(filteredMovies).length === 0
+        ? setNotFound(true)
+        : setNotFound(false);
     } else {
       setCheckboxStatus(false);
       localStorage.setItem(`${currentUser.email} - shortSavedMovies`, false);
@@ -45,9 +49,10 @@ function SavedMovies({ onDeleteClick, savedMoviesList }) {
     }
   }
 
-
   React.useEffect(() => {
-    if (localStorage.getItem(`${currentUser.email} - shortSavedMovies`) === 'true') {
+    if (
+      localStorage.getItem(`${currentUser.email} - shortSavedMovies`) === "true"
+    ) {
       setCheckboxStatus(true);
       setShowedMovies(filterShortMovies(savedMoviesList));
     } else {
@@ -78,6 +83,5 @@ function SavedMovies({ onDeleteClick, savedMoviesList }) {
     </main>
   );
 }
-
 
 export default SavedMovies;
