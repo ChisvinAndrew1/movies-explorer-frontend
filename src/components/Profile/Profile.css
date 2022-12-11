@@ -74,6 +74,13 @@
     line-height: 16px;
     color: #fff;
     padding: 0;
+    transition: opacity .8s ease-out;
+    opacity: 1;
+}
+
+.profile__submit_is_disabled {
+    transition: opacity .8s ease-out;
+    opacity: .2;
 }
 
 .profile__link {

@@ -94,6 +94,7 @@ function App() {
     auth.signout()
     .then(() => {
       setCurrentUser({});
+      localStorage.clear();
       setLoggedIn(false);
       history.push("/");
     }) 

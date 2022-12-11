@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.chisvin.nomoredomains.xyz";
+export const BASE_URL = "http://localhost:3001";
 
 const checkResponse = (response) => {
   console.log("response ok: ", response);

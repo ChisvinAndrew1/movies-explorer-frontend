@@ -79,7 +79,7 @@ function Profile({ onLogOut, handleProfile }) {
 
       <button
         disabled={buttonValidity ? true : false}
-        className="profile__submit"
+        className={`profile__submit ${buttonValidity ? "profile__submit_is_disabled" : ""}`}
         type="submit"
       >
         Редактировать
