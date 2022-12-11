@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import info_ok from "../../images/info-ok.jpg";
+import info_err from "../../images/info-err.jpg";
+
 import "./App.css";
 import * as auth from "../../utils/Auth";
 import Header from "../Header/Header";
@@ -17,6 +20,7 @@ import { IsLoggedInContext } from "../../contexts/isloggedInContext";
 import mainApi from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Preloader from "../Preloader/Preloader";
+import InfoToolTip from "../InfoTooltip/InfoTooltip";
 
 function App() {
   const location = useLocation();
@@ -27,8 +31,9 @@ function App() {
   const [savedMoviesList, setSavedMoviesList] = useState([]);
   const [load, setLoad] = useState(false);
   const [isLoader, setIsLoader] = useState(false);
+  const [isTooltipPopupOpen, setIsTooltipPopupOpen] = useState(false);
+  const [infoPopup, setInfoPopup] = useState({});
 
-  //регистрация и токен
   React.useEffect(() => {
     const path = location.pathname;
     setIsLoader(true);
@@ -36,13 +41,19 @@ function App() {
       .getContent()
       .then((res) => {
         if (res) {
-          console.log(res);
           setLoggedIn(true);
           setCurrentUser(res);
           history.push(path);
         }
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(err);
+        setIsTooltipPopupOpen(true);
+        setInfoPopup({
+          message: "Что-то пошло не так! Авторизация не успешна!",
+          img: info_err,
+        });
+      })
       .finally(() => {
         setIsLoader(false);
         setLoad(true);
@@ -57,9 +68,16 @@ function App() {
         .then((data) => {
           const [userData] = data;
           setCurrentUser(userData);
-          // setCards(cardList.reverse());
         })
-        .catch((err) => console.log(err))
+        .catch((err) => {
+          console.log(err);
+          setIsTooltipPopupOpen(true);
+          setInfoPopup({
+            message:
+              "Что-то пошло не так! Данные о пользователе не загрузились.",
+            img: info_err,
+          });
+        })
         .finally(() => setIsLoader(false));
     }
   }, [loggedIn]);
@@ -67,8 +85,9 @@ function App() {
   function handleBurgerMenuClick() {
     setIsBurgerMenuOpen(true);
   }
-  function closeBurgerMenu() {
+  function closePopups() {
     setIsBurgerMenuOpen(false);
+    setIsTooltipPopupOpen(false);
   }
 
   function handleLogOut() {
@@ -86,9 +105,20 @@ function App() {
         if (res) {
           console.log(res);
           history.push("/signin");
+          setIsTooltipPopupOpen(true);
+          setInfoPopup({
+            message: "Вы успешно зарегистрировались!",
+            img: info_ok,
+          });
         }
       })
-      .catch(() => {})
+      .catch(() => {
+        setIsTooltipPopupOpen(true);
+        setInfoPopup({
+          message: "Что-то пошло не так! Регистрация не прошла!",
+          img: info_err,
+        });
+      })
       .finally(() => setIsLoader(false));
   }
   function handleAuth(data) {
@@ -97,16 +127,15 @@ function App() {
       .authorize(data)
       .then(() => {
         setLoggedIn(true);
-        // setEmail(res.email);
         history.push("/movies");
       })
       .catch((err) => {
         console.log(err);
-        // setIsTooltipPopupOpen(true);
-        // setInfoPopup({
-        //   message: "Что-то пошло не так! Попробуйте еще раз.",
-        //   img: info_err,
-        // });
+        setIsTooltipPopupOpen(true);
+        setInfoPopup({
+          message: "Что-то пошло не так! Авторизация не успешна!",
+          img: info_err,
+        });
       })
       .finally(() => setIsLoader(false));
   }
@@ -117,20 +146,20 @@ function App() {
       .editInfo({ email, name })
       .then((newUserData) => {
         setCurrentUser(newUserData);
-        // setIsInfoTooltip({
-        //   isOpen: true,
-        //   successful: true,
-        //   text: 'Ваши данные обновлены!',
-        // });
+        setIsTooltipPopupOpen(true);
+        setInfoPopup({
+          message: "Ваши данные обновлены!",
+          img: info_ok,
+        });
       })
-      .catch(
-        (err) => console.log(err)
-        // setIsInfoTooltip({
-        //   isOpen: true,
-        //   successful: false,
-        //   text: err,
-        // })
-      )
+      .catch((err) => {
+        console.log(err);
+        setIsTooltipPopupOpen(true);
+        setInfoPopup({
+          message: "Что-то пошло не так! Не удалось обновить данные",
+          img: info_err,
+        });
+      })
       .finally(() => setIsLoader(false));
   }
 
@@ -141,14 +170,14 @@ function App() {
         setSavedMoviesList([newMovie, ...savedMoviesList]);
         console.log(savedMoviesList);
       })
-      .catch(
-        (err) => console.log(err)
-        // setIsInfoTooltip({
-        //   isOpen: true,
-        //   successful: false,
-        //   text: err,
-        // })
-      );
+      .catch((err) => {
+        console.log(err);
+        setIsTooltipPopupOpen(true);
+        setInfoPopup({
+          message: "Что-то пошло не так! Фильм не удалось сохранить",
+          img: info_err,
+        });
+      });
   }
 
   function handleDeleteMovie(movie) {
@@ -169,14 +198,14 @@ function App() {
         });
         setSavedMoviesList(newMoviesList);
       })
-      .catch(
-        (err) => console.log(err)
-        // setIsInfoTooltip({
-        //   isOpen: true,
-        //   successful: false,
-        //   text: err,
-        // })
-      );
+      .catch((err) => {
+        console.log(err);
+        setIsTooltipPopupOpen(true);
+        setInfoPopup({
+          message: "Что-то пошло не так! Удалить фильм из сохраненных не вышло",
+          img: info_err,
+        });
+      });
   }
 
   React.useEffect(() => {
@@ -189,14 +218,14 @@ function App() {
           );
           setSavedMoviesList(UserMoviesList);
         })
-        .catch(
-          (err) => console.log(err)
-          // setIsInfoTooltip({
-          //   isOpen: true,
-          //   successful: false,
-          //   text: err,
-          // })
-        );
+        .catch((err) => {
+          console.log(err);
+          setIsTooltipPopupOpen(true);
+          setInfoPopup({
+            message: "Что-то пошло не так! Список фильмов не загружен",
+            img: info_err,
+          });
+        });
     }
   }, [currentUser, loggedIn]);
 
@@ -211,10 +240,7 @@ function App() {
               <Switch>
                 <Route exact path="/">
                   <Header onBurgerMenu={handleBurgerMenuClick} />
-                  <BurgerMenu
-                    isOpen={isBurgerMenuOpen}
-                    onClose={closeBurgerMenu}
-                  />
+                  <BurgerMenu isOpen={isBurgerMenuOpen} onClose={closePopups} />
                   <Main />
                   <Footer />
                 </Route>
@@ -228,10 +254,7 @@ function App() {
                 </Route>
                 <ProtectedRoute path="/movies" loggedIn={loggedIn}>
                   <Header onBurgerMenu={handleBurgerMenuClick} />
-                  <BurgerMenu
-                    isOpen={isBurgerMenuOpen}
-                    onClose={closeBurgerMenu}
-                  />
+                  <BurgerMenu isOpen={isBurgerMenuOpen} onClose={closePopups} />
                   <Movies
                     onLikeClick={handleSaveMovie}
                     savedMoviesList={savedMoviesList}
@@ -241,10 +264,7 @@ function App() {
                 </ProtectedRoute>
                 <ProtectedRoute path="/saved-movies" loggedIn={loggedIn}>
                   <Header onBurgerMenu={handleBurgerMenuClick} />
-                  <BurgerMenu
-                    isOpen={isBurgerMenuOpen}
-                    onClose={closeBurgerMenu}
-                  />
+                  <BurgerMenu isOpen={isBurgerMenuOpen} onClose={closePopups} />
                   <SavedMovies
                     savedMoviesList={savedMoviesList}
                     onDeleteClick={handleDeleteMovie}
@@ -253,10 +273,7 @@ function App() {
                 </ProtectedRoute>
                 <ProtectedRoute path="/profile" loggedIn={loggedIn}>
                   <Header onBurgerMenu={handleBurgerMenuClick} />
-                  <BurgerMenu
-                    isOpen={isBurgerMenuOpen}
-                    onClose={closeBurgerMenu}
-                  />
+                  <BurgerMenu isOpen={isBurgerMenuOpen} onClose={closePopups} />
 
                   <Profile
                     handleProfile={handleProfile}
@@ -268,6 +285,12 @@ function App() {
                   <PageNotFound />
                 </Route>
               </Switch>
+              <InfoToolTip
+                name="info"
+                isOpen={isTooltipPopupOpen}
+                onClose={closePopups}
+                info={infoPopup}
+              />
             </div>
           </IsLoggedInContext.Provider>
         </CurrentUserContext.Provider>
