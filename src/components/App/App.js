@@ -50,7 +50,7 @@ function App() {
         console.log(err);
         setIsTooltipPopupOpen(true);
         setInfoPopup({
-          message: "Что-то пошло не так! Авторизация не успешна!",
+          message: "Необходимо войти или зарегистрироваться!",
           img: info_err,
         });
       })
@@ -91,13 +91,12 @@ function App() {
   }
 
   function handleLogOut() {
-    auth.signout()
-    .then(() => {
+    auth.signout().then(() => {
       setCurrentUser({});
       localStorage.clear();
       setLoggedIn(false);
       history.push("/");
-    }) 
+    });
   }
 
   function handleRegistration(data) {

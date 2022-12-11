@@ -45,5 +45,5 @@ export const getContent = () => {
 export const signout = () => {
   return fetch(`${BASE_URL}/signout`, {
     credentials: "include",
-  }).then(this._handleResponse);
+  }).then(checkResponse);
 };

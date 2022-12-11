@@ -19,7 +19,11 @@ function SignForm({
     >
       <h2 className="sign__title">{title}</h2>
       {children}
-      <button disabled={!isValid} className="sign__submit" type="submit">
+      <button
+        disabled={!isValid}
+        className={`sign__submit ${!isValid ? "sign__submit_is_disabled" : ""}`}
+        type="submit"
+      >
         {textSubmit}
       </button>
       {childrenSign}
