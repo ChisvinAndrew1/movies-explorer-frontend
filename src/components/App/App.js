@@ -91,10 +91,12 @@ function App() {
   }
 
   function handleLogOut() {
-    setCurrentUser({});
-    setLoggedIn(false);
-    localStorage.clear();
-    history.push("/");
+    auth.signout()
+    .then(() => {
+      setCurrentUser({});
+      setLoggedIn(false);
+      history.push("/");
+    }) 
   }
 
   function handleRegistration(data) {
