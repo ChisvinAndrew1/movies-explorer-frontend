@@ -57,7 +57,6 @@ function SearchForm({ handleSearchSubmit, handleShortFilms, checkboxStatus }) {
             placeholder="Фильм"
             required
             autoComplete="off"
-            minLength="2"
           />
           <span className="search__error">{errorSearch}</span>
           <button

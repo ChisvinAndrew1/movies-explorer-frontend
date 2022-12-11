@@ -261,6 +261,7 @@ function App() {
                     onLikeClick={handleSaveMovie}
                     savedMoviesList={savedMoviesList}
                     onDeleteClick={handleDeleteMovie}
+                    setIsLoader={setIsLoader}
                   />
                   <Footer />
                 </ProtectedRoute>

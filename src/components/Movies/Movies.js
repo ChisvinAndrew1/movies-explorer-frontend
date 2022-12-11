@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import  "./Movies.css";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -8,7 +9,7 @@ import {
   filterShortMovies,
   transformMovies,
 } from "../../utils/filmController";
-function Movies({ savedMoviesList, onLikeClick, onDeleteClick }) {
+function Movies({ savedMoviesList, onLikeClick, onDeleteClick, setIsLoader }) {
   const currentUser = React.useContext(CurrentUserContext);
   const [checkboxStatus, setCheckboxStatus] = useState(false);
   console.log(checkboxStatus);
@@ -41,7 +42,7 @@ function Movies({ savedMoviesList, onLikeClick, onDeleteClick }) {
     localStorage.setItem(`${currentUser.email} - shortMovies`, checkboxStatus);
 
     if (isAllMovies.length === 0) {
-      // setIsLoader(true);
+      setIsLoader(true);
       moviesApi
         .getMovies()
         .then((movies) => {
@@ -52,8 +53,8 @@ function Movies({ savedMoviesList, onLikeClick, onDeleteClick }) {
             checkboxStatus
           );
         })
-        .catch();
-      // .finally(() => setIsLoader(false));
+        .catch()
+        .finally(() => setIsLoader(false));
     } else {
       handleSetFilteredMovies(isAllMovies, inputValue, checkboxStatus);
     }
@@ -102,13 +103,17 @@ function Movies({ savedMoviesList, onLikeClick, onDeleteClick }) {
         handleShortFilms={handleShortFilms}
         checkboxStatus={checkboxStatus}
       />
-      {!NotFound && (
+      {!NotFound ? (
         <MoviesCardList
           movieList={filteredMovies}
           savedMoviesList={savedMoviesList}
           onLikeClick={onLikeClick}
           onDeleteClick={onDeleteClick}
         />
+      ) : (
+        <div className="movies__container">
+          <span className="movies__text">Ничего не найдено</span>
+        </div>
       )}
     </div>
   );
