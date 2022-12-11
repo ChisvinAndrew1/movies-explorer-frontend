@@ -106,7 +106,7 @@ function App() {
       .then((res) => {
         if (res) {
           console.log(res);
-          history.push("/signin");
+          history.push("/movies");
           setIsTooltipPopupOpen(true);
           setInfoPopup({
             message: "Вы успешно зарегистрировались!",
