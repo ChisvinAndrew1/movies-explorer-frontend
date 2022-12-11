@@ -246,14 +246,14 @@ function App() {
                   <Main />
                   <Footer />
                 </Route>
-                <Route path="/signup">
+                <ProtectedRoute path="/signup" loggedIn={!loggedIn}>
                   <Header />
                   <Register handleRegister={handleRegistration} />
-                </Route>
-                <Route path="/signin">
+                </ProtectedRoute>
+                <ProtectedRoute path="/signin" loggedIn={!loggedIn}>
                   <Header />
                   <Login onSubmit={handleAuth} />
-                </Route>
+                </ProtectedRoute>
                 <ProtectedRoute path="/movies" loggedIn={loggedIn}>
                   <Header onBurgerMenu={handleBurgerMenuClick} />
                   <BurgerMenu isOpen={isBurgerMenuOpen} onClose={closePopups} />
