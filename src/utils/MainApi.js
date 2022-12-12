@@ -65,7 +65,7 @@ class MainApi {
   }
 }
 
-const mainApi = new MainApi("http://localhost:3001/");
+const mainApi = new MainApi("https://api.chisvin.nomoredomains.xyz/");
 // https://api.chisvin.nomoredomains.xyz/
-
+// http://localhost:3001/
 export default mainApi;
