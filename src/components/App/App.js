@@ -47,7 +47,9 @@ function App() {
         }
       })
       .catch((err) => {
-        console.log(err);
+        if (err === 401) {
+          handleLogOut();
+        }
         setIsTooltipPopupOpen(true);
         setInfoPopup({
           message: "Необходимо войти или зарегистрироваться!",
@@ -70,6 +72,9 @@ function App() {
           setCurrentUser(userData);
         })
         .catch((err) => {
+          if (err === 401) {
+            handleLogOut();
+          }
           console.log(err);
           setIsTooltipPopupOpen(true);
           setInfoPopup({
@@ -92,9 +97,10 @@ function App() {
 
   function handleLogOut() {
     auth.signout().then(() => {
-      setCurrentUser({});
+      setSavedMoviesList([]);
       localStorage.clear();
       setLoggedIn(false);
+      setCurrentUser({});
       history.push("/");
     });
   }
@@ -155,7 +161,9 @@ function App() {
         });
       })
       .catch((err) => {
-        console.log(err);
+        if (err === 401) {
+          handleLogOut();
+        }
         setIsTooltipPopupOpen(true);
         setInfoPopup({
           message: "Что-то пошло не так! Не удалось обновить данные",
@@ -173,7 +181,9 @@ function App() {
         console.log(savedMoviesList);
       })
       .catch((err) => {
-        console.log(err);
+        if (err === 401) {
+          handleLogOut();
+        }
         setIsTooltipPopupOpen(true);
         setInfoPopup({
           message: "Что-то пошло не так! Фильм не удалось сохранить",
@@ -201,6 +211,9 @@ function App() {
         setSavedMoviesList(newMoviesList);
       })
       .catch((err) => {
+        if (err === 401) {
+          handleLogOut();
+        }
         console.log(err);
         setIsTooltipPopupOpen(true);
         setInfoPopup({
@@ -221,6 +234,9 @@ function App() {
           setSavedMoviesList(UserMoviesList);
         })
         .catch((err) => {
+          if (err === 401) {
+            handleLogOut();
+          }
           console.log(err);
           setIsTooltipPopupOpen(true);
           setInfoPopup({

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import  "./Movies.css";
+import "./Movies.css";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";

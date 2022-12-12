@@ -6,7 +6,7 @@ const checkResponse = (response) => {
     return response.json();
   }
 
-  return Promise.reject(`Ошибка ${response.status}`);
+  return Promise.reject(response.status);
 };
 
 export const register = ({ email, password, name }) => {
@@ -36,7 +36,6 @@ export const getContent = () => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      // 'Authorization': `Bearer ${token}`,
     },
     credentials: "include",
   }).then(checkResponse);
@@ -45,5 +44,5 @@ export const getContent = () => {
 export const signout = () => {
   return fetch(`${BASE_URL}/signout`, {
     credentials: "include",
-  }).then(checkResponse);
+  });
 };
