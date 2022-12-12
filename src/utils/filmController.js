@@ -1,6 +1,4 @@
-// import { SHORTMOVIES_DURATION } from './constants.js';
 const SHORTMOVIES_DURATION = 40;
-// проверка изображений полученных от сервера
 function transformMovies(movies) {
   movies.forEach((movie) => {
     if (!movie.image) {
@@ -22,12 +20,10 @@ function transformMovies(movies) {
   return movies;
 }
 
-// фильтрация по длительности
 function filterShortMovies(movies) {
   return movies.filter((movie) => movie.duration < SHORTMOVIES_DURATION);
 }
 
-// фильтрация по запросу
 function filterMovies(movies, userQuery, shortMoviesCheckbox) {
   console.log(movies);
   const moviesByUserQuery = movies.filter((movie) => {
@@ -61,9 +57,6 @@ function getSavedMovieCard(arr, movie) {
 
   console.log(movie.id);
   return arr.find((m) => m.movieId === movie.id);
-  // return arr.find((item) => {
-  //   console.log(item.movieId)
-  //   return item.movieId === (movie._id || movie.movieId);
 }
 
 export {

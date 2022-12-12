@@ -3,6 +3,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
 import "./SavedMovies.css";
+import "../Movies/Movies.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { filterMovies, filterShortMovies } from "../../utils/filmController";
 
@@ -21,11 +22,6 @@ function SavedMovies({ onDeleteClick, savedMoviesList }) {
     );
     if (moviesList.length === 0) {
       setNotFound(true);
-      // setIsInfoTooltip({
-      //   isOpen: true,
-      //   successful: false,
-      //   text: 'Ничего не найдено.',
-      // });
     } else {
       setNotFound(false);
       setFilteredMovies(moviesList);
@@ -73,12 +69,16 @@ function SavedMovies({ onDeleteClick, savedMoviesList }) {
         handleShortFilms={handleShortFilms}
         checkboxStatus={checkboxStatus}
       />
-      {!NotFound && (
+      {!NotFound ? (
         <MoviesCardList
           movieList={showedMovies}
           savedMoviesList={savedMoviesList}
           onDeleteClick={onDeleteClick}
         />
+      ) : (
+        <div className="movies__container">
+          <span className="movies__text">Ничего не найдено</span>
+        </div>
       )}
     </main>
   );

@@ -9,10 +9,9 @@ function FilterCheckbox({ checkboxStatus, handleShortFilms }) {
         type="checkbox"
         id="checkbox"
         className="checkbox__input"
-        value={checkboxStatus} // checked={checkboxStatus ? true : false}
+        checked={checkboxStatus}
         onChange={handleShortFilms}
       />
-      {/* <span className="checkbox__circle"></span> */}
       <label className="checkbox__label">Короткометражки</label>
     </fieldset>
   );
