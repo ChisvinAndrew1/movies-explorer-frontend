@@ -30,11 +30,9 @@ function SearchForm({ handleSearchSubmit, handleShortFilms, checkboxStatus }) {
   React.useEffect(() => {
     if (
       location.pathname === "/movies" &&
-      localStorage.getItem(`${currentUser.email} - movieSearch`)
+      localStorage.getItem("movieSearch")
     ) {
-      const searchValue = localStorage.getItem(
-        `${currentUser.email} - movieSearch`
-      );
+      const searchValue = localStorage.getItem("movieSearch");
       values.search = searchValue;
       setIsValid(true);
     }
