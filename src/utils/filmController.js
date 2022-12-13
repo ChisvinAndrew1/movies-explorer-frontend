@@ -1,4 +1,5 @@
-const SHORTMOVIES_DURATION = 40;
+import { SHORTMOVIES_MINUTS } from "./constans";
+
 function transformMovies(movies) {
   movies.forEach((movie) => {
     if (!movie.image) {
@@ -21,7 +22,7 @@ function transformMovies(movies) {
 }
 
 function filterShortMovies(movies) {
-  return movies.filter((movie) => movie.duration < SHORTMOVIES_DURATION);
+  return movies.filter((movie) => movie.duration < SHORTMOVIES_MINUTS);
 }
 
 function filterMovies(movies, userQuery, shortMoviesCheckbox) {

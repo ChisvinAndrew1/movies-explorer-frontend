@@ -21,5 +21,6 @@ const DEVICE_SIZE_PARAMS = {
     },
   },
 };
+const SHORTMOVIES_MINUTS = 40;
 
-export { DEVICE_SIZE_PARAMS };
+export { DEVICE_SIZE_PARAMS, SHORTMOVIES_MINUTS };
