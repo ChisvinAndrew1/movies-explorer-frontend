@@ -47,7 +47,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     z-index: 10;
     padding: 20px;
 }
@@ -64,7 +64,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #FF6838;
+    background: #3DDC84;
     border-radius: 50px;
 }
 

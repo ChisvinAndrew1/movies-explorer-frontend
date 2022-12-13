@@ -1,6 +1,6 @@
 import React from "react";
 
-function Input({ name, value, type, label }) {
+function Input({ name, value, type, label, handleChange, error }) {
   return (
     <div className="sign__input-container">
       <label htmlFor={name} className="sign__label">
@@ -10,16 +10,17 @@ function Input({ name, value, type, label }) {
         id={name}
         name={name}
         type={type}
-        className="sign__input"
+        className={`sign__input ${error && "sign__input_type_invalid"}`}
         value={value}
         minLength="2"
         maxLength="30"
         autoComplete="off"
-        //   value={values.name || ''}
-        //   onChange={handlesChange}
+        onChange={handleChange}
         required
       />
-      <span id="error" className="sign__error"></span>
+      <span id="error" className="sign__error">
+        {error}
+      </span>
     </div>
   );
 }

@@ -3,17 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "cors": "^2.8.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-responsive": "^9.0.0-beta.8",
     "react-router-dom": "^5.2.1",
     "react-scripts": "5.0.0",
+    "validator": "^13.7.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "deploy": "npm run build && scp -r ./build/* chisvin_andrew@51.250.111.109:/home/chisvin_andrew/frontend",
+    "deploy": "npm run build && scp -r ./build/* chisvin_diplom@158.160.2.105:/home/chisvin_diplom/frontend",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
