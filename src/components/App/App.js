@@ -110,15 +110,13 @@ function App() {
     auth
       .register(data)
       .then((res) => {
-        if (res) {
-          console.log(res);
-          history.push("/movies");
-          setIsTooltipPopupOpen(true);
+        handleAuth(data);
+        setIsTooltipPopupOpen(true);
           setInfoPopup({
             message: "Вы успешно зарегистрировались!",
             img: info_ok,
           });
-        }
+        
       })
       .catch(() => {
         setIsTooltipPopupOpen(true);
